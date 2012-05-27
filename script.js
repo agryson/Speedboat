@@ -29,7 +29,7 @@ function settings() {
     }
 }
 
-function cleanUp(){
+function cleanUp(closing){
     var val = '';
     var input = document.getElementById('defaultWS').value;
     for (var i = 0; i < document.getElementById('defaultWS').value.length; i++) {
@@ -40,6 +40,10 @@ function cleanUp(){
     if (val > 0) {
         localStorage.workspace = val;
         document.getElementById('defaultWS').value = localStorage.workspace;
+        if (closing === false) {
+            document.getElementById('mainframe').setAttribute('src', 'http://mobile.hojoki.com/#stream/' + val);
+            settings();
+        }
     } else {
         document.getElementById('defaultWS').value = '';
         delete localStorage['workspace'];
@@ -49,5 +53,6 @@ function cleanUp(){
 function clearField() {
     document.getElementById('defaultWS').value = '';
     document.getElementById('defaultWS').placeholder = "Workspace ID";
+    document.getElementById('mainframe').setAttribute('src', 'http://mobile.hojoki.com/#stream/mycloud');
     delete localStorage['workspace'];
 }

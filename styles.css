@@ -11,6 +11,42 @@ html {
 	overflow: hidden;
 }
 
+p {
+	font-family: arial;
+	font-weight: bold;
+	font-size: 60%;
+	cursor: default;
+}
+
+button {
+	border-radius: 3px;
+	margin-left: 20px;
+}
+
+input {
+	border-radius: 3px;
+	padding: 3px 5px 3px 5px; 
+	margin-right: 0;
+	border-style: none;
+	cursor: default;
+} 
+
+input:focus {
+	box-shadow: 0 0 3px 3px #FFF;
+}
+
+#clear {
+	margin-left: -20px;
+	padding-top: 3px;
+	opacity: 0.5;
+	cursor: default;
+}
+
+#clear:hover {
+	opacity: 1.0;
+	cursor: default;
+}
+
 #mainframe{
 	display: block;
 	box-shadow: 0 8px 6px -6px #191919;
@@ -25,15 +61,20 @@ html {
 	-webkit-transition: height 0.5s ease;
 }
 
+#settingsTitleContainer{
+	padding-bottom: 5px;
+}
+
 #settingsContainer {
-	padding-top: 10px;
-	padding-left: 20px;
+	padding: 20px;
+	cursor: default;
 }
 
 #title {
 	font-family: 'Mr Dafoe', cursive;
 	margin-left: 5px;
 	text-shadow: 0 0 2px rgba(255,255,255,.6);
+	cursor: default;
 }
 
 #logo {
@@ -42,4 +83,14 @@ html {
 
 #sprocket {
 	float: right;
+	font-family: arial;
+	font-size: 60%;
+	font-weight: bold;
+	cursor: default;
+	padding: 5px;
+}
+
+#codeSample {
+	font-family: courier;
+	color: #191919;
 }

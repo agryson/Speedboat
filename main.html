@@ -28,16 +28,23 @@ along with this program (see the Readme at https://agryson@github.com/agryson/Sp
 	<body onload="init()" onunload="cleanUp()">
 		<iframe id="mainframe">Something has gone horribly wrong with this iframe...</iframe>
 		<div id="settings">
-			<img id="logo" src="24.png" />
-			<span id="title">Speedboat for Hojoki</span>
-			<img id="sprocket" src="sprocket.png" onclick="settings()" />
+			<div id = "settingsTitleContainer" onclick="settings()">
+				<img id="logo" src="24.png" />
+				<span id="title">Speedboat for Hojoki</span>
+				<span id="sprocket">Settings</span>
+			</div>
 			<div id="settingsContainer">
-				<input type='text' id="defaultWS" placeholder="Workspace ID"></input>
-				<button onclick="cleanUp()">Save</button>
-				<button onclick="clearField()">X</button>
+				<input type='text' id="defaultWS" placeholder="Workspace ID">
+					<img id="clear" src="close.png" onclick="clearField()" />
+				</input>
+				
+				<button onclick="cleanUp(false)">Save</button>
 				<br />
-				<p>Change the default workspace here. Simply get the numbers at the end of your Hojoki Workspace url and enter them above. </p> 
-				<p>The chosen workspace will then load first whenever you click on the Speedboat for Hojoki icon.</p>
+				<br />
+				<p>You can change the default workspace here. Simply put the url for your workspace into the box above and hit save! :D </p> <br />
+				<p>The url, which should look something like: <span id="codeSample">http://my.hojoki.com/#/12345</span>, will then be awesomatically clipped and cropped to ensure you always land on that workspace by default (and of course, your data stays between you and hojoki)</p><br />
+				<p>Just empty the box to return to the default setting of loading your principle Hojoki homepage.</p> <br />
+				<p><em>Speedboat for Hojoki</em> is open sourced under the GPLv3 and you can get all the source code from <a href='https://github.com/agryson/Speedboat/zipball/master'>this .zip file</a>.
 			</div>
 		</div>
 	</body>
