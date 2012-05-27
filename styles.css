@@ -1,16 +1,45 @@
 body {
 	margin: 0;
+	padding: 0;
 	width: 300px;
 	height: 485px;
-	overflow-y: hidden;
-	overflow-x: hidden;
+	overflow: hidden;
 }
 
 html {
 	padding: 0;
+	overflow: hidden;
 }
 
-.frame{
-	width: 100%;
+#mainframe{
+	display: block;
+	box-shadow: 0 8px 6px -6px #191919;
+	-webkit-transition: height 0.5s ease;
+}
+
+#settings {
 	height: 100%;
+	background-color: #99bec4;
+	box-shadow: inset 0 8px 24px 5px #FFF;
+	overflow: hidden;
+	-webkit-transition: height 0.5s ease;
+}
+
+#settingsContainer {
+	padding-top: 10px;
+	padding-left: 20px;
+}
+
+#title {
+	font-family: 'Mr Dafoe', cursive;
+	margin-left: 5px;
+	text-shadow: 0 0 2px rgba(255,255,255,.6);
+}
+
+#logo {
+	float: left;
+}
+
+#sprocket {
+	float: right;
 }

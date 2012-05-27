@@ -1,54 +1,53 @@
-function startEngines() {
-         
-    var mainframe = document.createElement('iframe');
+function init() {
+    if(localStorage.workspace === null || localStorage.workspace === undefined) {
+        document.getElementById('defaultWS').value = '';
+        startEngines('mycloud');
+    } else {
+        document.getElementById('defaultWS').value = localStorage.workspace;
+        startEngines(localStorage.workspace);
+    }
+}
+
+
+function startEngines(workspace) {
+    var destination = 'http://mobile.hojoki.com/#stream/' + workspace; 
+    var mainframe = document.getElementById('mainframe');
     mainframe.setAttribute('width', '100%');
-    mainframe.setAttribute('height', '100%');
+    mainframe.setAttribute('height', '461px');
     mainframe.setAttribute('frameborder', '0');
     mainframe.setAttribute('id', 'mainframe');
-    //document.addEventListener('click', function(event) {remember(mainframe.src);}, false);
-    mainframe.setAttribute('src', 'http://mobile.hojoki.com');
-    //console.log(hojoki.mobile.pages.stream.a);
+    mainframe.setAttribute('src', destination);
+}
 
-    console.log('ALEX   ***   ' + chrome.extension.getURL('bg.html'));
-
-    
-    /*
-    if (localStorage.lastRead) {
-    	console.log("ALEX: lastread= " + localStorage.lastRead);
-        mainframe.setAttribute('src', localStorage.lastRead);
-        mainframe.setAttribute('src', "http://mobile.hojoki.com/");
+function settings() {
+    var mainframe = document.getElementById('mainframe');
+    var settings = document.getElementById("settings");
+    if (parseInt(mainframe.height) == 0){
+        mainframe.height = 461 + 'px';
     } else {
-    	console.log("ALEX: virgin source");
-    	mainframe.setAttribute('src', "http://mobile.hojoki.com/");
-    	localStorage.lastRead = "http://mobile.hojoki.com/";
-    	console.log(localStorage.lastRead);
-*/
-    //console.log('hi' + chrome.extension.getBackgroundPage().document.getElementById('bgFrame'));
-    //document.body.appendChild(chrome.extension.getBackgroundPage().document.getElementById('bgFrame'));
-    document.body.appendChild(mainframe);
-    //window = chrome.extension.getBackgroundPage().document.getElementById('frame');
-    
-    window.onbeforeunload = body.html();
-/*
-    try {
-    	console.log('ALEX   ' + document.getElementById('mainframe').location.href);
-    } catch (e) {
-    	console.log('ALEX  error ' + e);
+        mainframe.height = 0;
     }
-*/
-    bookmark();
-    console.log(chrome.extension.getURL('bg.html'));
 }
 
-function remember(){
-	var site =  document.getElementById('mainframe').src;
-	console.log('remember... ' + site);
-	localStorage.lastRead = site;
+function cleanUp(){
+    var val = '';
+    var input = document.getElementById('defaultWS').value;
+    for (var i = 0; i < document.getElementById('defaultWS').value.length; i++) {
+        if(input.charAt(i) !== NaN && input.charAt(i) >= 0 && input.charAt(i) <= 9){
+            val += document.getElementById('defaultWS').value.charAt(i);
+        }
+    };
+    if (val > 0) {
+        localStorage.workspace = val;
+        document.getElementById('defaultWS').value = localStorage.workspace;
+    } else {
+        document.getElementById('defaultWS').value = '';
+        delete localStorage['workspace'];
+    }
 }
 
-function bookmark() {
-	console.log("ALEX: called the bookmark 1 " + document.getElementById('mainframe').id);
-	console.log("ALEX: called the bookmark 2 " + document.getElementById('mainframe').location.href);
-	remember();
-	setTimeout(bookmark, 2000);
+function clearField() {
+    document.getElementById('defaultWS').value = '';
+    document.getElementById('defaultWS').placeholder = "Workspace ID";
+    delete localStorage['workspace'];
 }
