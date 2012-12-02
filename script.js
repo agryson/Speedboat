@@ -5,9 +5,8 @@ document.addEventListener('DOMContentLoaded', function () {
   init();
 });
 
-window.onunload = cleanUp();
-
 function init() {
+    console.log(localStorage.workspace);
     if(localStorage.workspace === null || localStorage.workspace === undefined) {
         document.getElementById('defaultWS').value = '';
         startEngines('all');
@@ -24,11 +23,12 @@ function startEngines(workspace) {
     mainframe.setAttribute('width', '100%');
     mainframe.setAttribute('height', '461px');
     mainframe.setAttribute('frameborder', '0');
-    mainframe.setAttribute('id', 'mainframe'); //Why do I need this?
+    //mainframe.setAttribute('id', 'mainframe'); //Why do I need this?
     mainframe.setAttribute('src', destination);
 }
 
 function settings() {
+    console.log(localStorage.workspace);
     var mainframe = document.getElementById('mainframe');
     //var settings = document.getElementById("settings");
     if (parseInt(mainframe.height, 10) === 0){
@@ -41,21 +41,25 @@ function settings() {
 function cleanUp(closing){
     var val = '';
     var input = document.getElementById('defaultWS').value;
+    console.log('input is' + input);
     for (var i = 0; i < document.getElementById('defaultWS').value.length; i++) {
-        if(!isNaN(input.charAt(i)) && input.charAt(i) >= 0 && input.charAt(i) <= 9){
+        if(input.charAt(i) !== NaN && input.charAt(i) >= 0 && input.charAt(i) <= 9){
             val += document.getElementById('defaultWS').value.charAt(i);
         }
     }
     if (val > 0) {
         localStorage.workspace = val;
         document.getElementById('defaultWS').value = localStorage.workspace;
-        if (closing === false) {
+        document.getElementById('mainframe').setAttribute('src', 'http://mobile.hojoki.com/#stream/' + val);
+        settings();
+        /*
+        if (!closing) {
             document.getElementById('mainframe').setAttribute('src', 'http://mobile.hojoki.com/#stream/' + val);
             settings();
         }
     } else {
         document.getElementById('defaultWS').value = '';
-        delete localStorage['workspace'];
+        delete localStorage['workspace'];*/
     }
 }
 

@@ -66,6 +66,7 @@ input:focus {
 }
 
 #settingsContainer {
+	color: white;
 	padding: 20px;
 	cursor: default;
 }
@@ -92,5 +93,5 @@ input:focus {
 
 #codeSample {
 	font-family: courier;
-	color: #191919;
+	color: white;
 }
