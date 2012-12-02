@@ -20,25 +20,22 @@ along with this program (see the Readme at https://agryson@github.com/agryson/Sp
 <html dir="ltr" lang="en" height="485px">
     <head>	
     	<link href='http://fonts.googleapis.com/css?family=Mr+Dafoe' rel='stylesheet' type='text/css'>
-    	<script type="text/JavaScript" src="script.js">
-		</script>
 		<link href="styles.css" rel="stylesheet" type="text/css" media="all">
-
 	</head>
-	<body onload="init()" onunload="cleanUp()">
+	<body>
 		<iframe id="mainframe">Something has gone horribly wrong with this iframe...</iframe>
 		<div id="settings">
-			<div id = "settingsTitleContainer" onclick="settings()">
+			<div id = "settingsTitleContainer">
 				<img id="logo" src="24.png" />
 				<span id="title">Speedboat for Hojoki</span>
 				<span id="sprocket">Settings</span>
 			</div>
 			<div id="settingsContainer">
 				<input type='text' id="defaultWS" placeholder="Workspace ID">
-					<img id="clear" src="close.png" onclick="clearField()" />
+					<img id="clear" src="close.png" />
 				</input>
 				
-				<button onclick="cleanUp(false)">Save</button>
+				<button id="save">Save</button>
 				<br />
 				<br />
 				<p>You can change the default workspace here. Simply put the url for your workspace into the box above and hit save! :D </p> <br />
@@ -47,6 +44,7 @@ along with this program (see the Readme at https://agryson@github.com/agryson/Sp
 				<p><em>Speedboat for Hojoki</em> is open sourced under the GPLv3 and you can get all the source code from <a href='https://github.com/agryson/Speedboat/zipball/master'>this .zip file</a>.
 			</div>
 		</div>
+		<script type="text/javascript" src="script.js"></script>
 	</body>
 
 </html>
