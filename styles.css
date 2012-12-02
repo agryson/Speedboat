@@ -12,9 +12,7 @@ html {
 }
 
 p {
-	font-family: arial;
-	font-weight: bold;
-	font-size: 60%;
+	font-family: Arial;
 	cursor: default;
 }
 
@@ -33,6 +31,10 @@ input {
 
 input:focus {
 	box-shadow: 0 0 3px 3px #FFF;
+}
+
+a {
+	color: #CCCCFF;
 }
 
 #clear {
@@ -56,17 +58,19 @@ input:focus {
 #settings {
 	height: 100%;
 	background-color: #274c4d;
-	box-shadow: inset 0 8px 24px 5px #FFF;
 	overflow: hidden;
 	-webkit-transition: height 0.5s ease;
 }
 
 #settingsTitleContainer{
+	font-family: Arial;
+	color: white;
 	padding-bottom: 5px;
 }
 
 #settingsContainer {
 	color: white;
+	font-size: 14px;
 	padding: 20px;
 	cursor: default;
 }
@@ -74,7 +78,6 @@ input:focus {
 #title {
 	font-family: 'Mr Dafoe', cursive;
 	margin-left: 5px;
-	text-shadow: 0 0 2px rgba(255,255,255,.6);
 	cursor: default;
 }
 
@@ -85,7 +88,6 @@ input:focus {
 #sprocket {
 	float: right;
 	font-family: arial;
-	font-size: 60%;
 	font-weight: bold;
 	cursor: default;
 	padding: 5px;

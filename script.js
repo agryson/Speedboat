@@ -23,18 +23,15 @@ function startEngines(workspace) {
     mainframe.setAttribute('width', '100%');
     mainframe.setAttribute('height', '461px');
     mainframe.setAttribute('frameborder', '0');
-    //mainframe.setAttribute('id', 'mainframe'); //Why do I need this?
     mainframe.setAttribute('src', destination);
 }
 
 function settings() {
-    console.log(localStorage.workspace);
     var mainframe = document.getElementById('mainframe');
-    //var settings = document.getElementById("settings");
-    if (parseInt(mainframe.height, 10) === 0){
+    if (parseInt(mainframe.height, 10) < 300){
         mainframe.height = 461 + 'px';
     } else {
-        mainframe.height = 0;
+        mainframe.height = 47 + 'px';
     }
 }
 
@@ -52,14 +49,6 @@ function cleanUp(closing){
         document.getElementById('defaultWS').value = localStorage.workspace;
         document.getElementById('mainframe').setAttribute('src', 'http://mobile.hojoki.com/#stream/' + val);
         settings();
-        /*
-        if (!closing) {
-            document.getElementById('mainframe').setAttribute('src', 'http://mobile.hojoki.com/#stream/' + val);
-            settings();
-        }
-    } else {
-        document.getElementById('defaultWS').value = '';
-        delete localStorage['workspace'];*/
     }
 }
 
