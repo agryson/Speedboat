@@ -5,8 +5,11 @@ document.addEventListener('DOMContentLoaded', function () {
   init();
 });
 
+/**
+ * Onload, we check the localStorage to see if the user had saved anything, if not, we set a default value
+ */
 function init() {
-    console.log(localStorage.workspace);
+    //console.log(localStorage.workspace);
     if(localStorage.workspace === null || localStorage.workspace === undefined) {
         document.getElementById('defaultWS').value = '';
         startEngines('all');
@@ -16,16 +19,22 @@ function init() {
     }
 }
 
-
+/**
+ * Loads up the appropriate page in the iFrame
+ * @param  {string} workspace The workspace ID to load
+ */
 function startEngines(workspace) {
     var destination = 'http://mobile.hojoki.com/#stream/' + workspace;
     var mainframe = document.getElementById('mainframe');
+    mainframe.setAttribute('src', destination);
     mainframe.setAttribute('width', '100%');
     mainframe.setAttribute('height', '461px');
     mainframe.setAttribute('frameborder', '0');
-    mainframe.setAttribute('src', destination);
 }
 
+/**
+ * Brings up the settings slider
+ */
 function settings() {
     var mainframe = document.getElementById('mainframe');
     if (parseInt(mainframe.height, 10) < 300){
@@ -35,12 +44,16 @@ function settings() {
     }
 }
 
-function cleanUp(closing){
+/**
+ * Upon closing, makes sure everything is saved and tidied away
+ */
+function cleanUp(){
     var val = '';
     var input = document.getElementById('defaultWS').value;
-    console.log('input is' + input);
+    var character;
     for (var i = 0; i < document.getElementById('defaultWS').value.length; i++) {
-        if(input.charAt(i) !== NaN && input.charAt(i) >= 0 && input.charAt(i) <= 9){
+        character = isNaN(input.charAt(i));
+        if(!character  && input.charAt(i) >= 0 && input.charAt(i) <= 9){
             val += document.getElementById('defaultWS').value.charAt(i);
         }
     }
@@ -52,6 +65,9 @@ function cleanUp(closing){
     }
 }
 
+/**
+ * Clears the input field and associated localStorage
+ */
 function clearField() {
     document.getElementById('defaultWS').value = '';
     document.getElementById('defaultWS').placeholder = "Workspace ID";
