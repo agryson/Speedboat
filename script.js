@@ -24,7 +24,7 @@ function init() {
  * @param  {string} workspace The workspace ID to load
  */
 function startEngines(workspace) {
-    var destination = 'http://mobile.hojoki.com/#stream/' + workspace;
+    var destination = 'http://m.hojoki.com/#' + workspace + '/feed';
     var mainframe = document.getElementById('mainframe');
     mainframe.setAttribute('src', destination);
     mainframe.setAttribute('width', '100%');
@@ -60,7 +60,7 @@ function cleanUp(){
     if (val > 0) {
         localStorage.workspace = val;
         document.getElementById('defaultWS').value = localStorage.workspace;
-        document.getElementById('mainframe').setAttribute('src', 'http://mobile.hojoki.com/#stream/' + val);
+        document.getElementById('mainframe').setAttribute('src', 'http://m.hojoki.com/#' + val + '/feed');
         settings();
     }
 }
@@ -71,6 +71,6 @@ function cleanUp(){
 function clearField() {
     document.getElementById('defaultWS').value = '';
     document.getElementById('defaultWS').placeholder = "Workspace ID";
-    document.getElementById('mainframe').setAttribute('src', 'http://mobile.hojoki.com/#stream/mycloud');
+    document.getElementById('mainframe').setAttribute('src', 'http://m.hojoki.com');
     delete localStorage['workspace'];
 }
